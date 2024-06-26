@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">InstabugChallenge</string>
+
+    <string-array name="request_types">
+        <item>GET</item>
+        <item>POST</item>
+    </string-array>
+
+    <string-array name="body_types">
+        <item>JSON String</item>
+        <item>Multipart/File Upload</item>
+    </string-array>
 </resources>
