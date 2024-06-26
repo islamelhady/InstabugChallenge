@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">InstabugChallenge</string>
     <string name="headers">Headers</string>
+    <string name="query">Query Param</string>
 
     <string-array name="request_types">
         <item>GET</item>
