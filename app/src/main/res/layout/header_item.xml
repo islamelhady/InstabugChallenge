@@ -22,7 +22,7 @@
         android:hint="Value" />
 
     <ImageView
-        android:id="@+id/delete_header"
+        android:id="@+id/delete_item"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_weight="0"

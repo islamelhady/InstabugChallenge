@@ -33,7 +33,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/add_item"
+                android:id="@+id/add_header_item"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_weight="0"
@@ -66,7 +66,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/add_item"
+                android:id="@+id/add_query_item"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_weight="0"

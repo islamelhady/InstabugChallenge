@@ -15,6 +15,7 @@ class TestingFragment : Fragment() {
     private val viewModel: TestingViewModel by viewModels()
     lateinit var binding: FragmentTestingBinding
     private lateinit var headersViewsList: MutableList<View>
+    private lateinit var queryViewsList: MutableList<View>
 
 
     override fun onCreateView(
@@ -28,11 +29,13 @@ class TestingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         headersViewsList = mutableListOf()
+        queryViewsList = mutableListOf()
         onAddHeader()
+        onAddQueryParam()
     }
 
     private fun onAddHeader() {
-        binding.addItem.setOnClickListener {
+        binding.addHeaderItem.setOnClickListener {
             // inflate header item from layouts
             val view = LayoutInflater.from(requireActivity())
                 .inflate(R.layout.header_item, binding.headerHost, false)
@@ -40,7 +43,7 @@ class TestingFragment : Fragment() {
             Log.i("Click", "${headersViewsList.size}")
 
              // on remove header clicked
-            view.findViewById<ImageView>(R.id.delete_header).setOnClickListener {
+            view.findViewById<ImageView>(R.id.delete_item).setOnClickListener {
                 if (headersViewsList.size != 0) {
                     val viewTag = (it.parent as View).tag.toString().toInt()
                     Log.i("AddHeader", viewTag.toString())
@@ -59,6 +62,37 @@ class TestingFragment : Fragment() {
             // add header view to list
             binding.headerHost.addView(view)
             headersViewsList.add(view)
+        }
+    }
+
+    private fun onAddQueryParam(){
+        binding.addQueryItem.setOnClickListener {
+            // inflate header item from layouts
+            val view = LayoutInflater.from(requireActivity())
+                .inflate(R.layout.header_item, binding.queryHost, false)
+
+            Log.i("Click", "${queryViewsList.size}")
+
+            // on remove header clicked
+            view.findViewById<ImageView>(R.id.delete_item).setOnClickListener {
+                if (queryViewsList.size != 0) {
+                    val viewTag = (it.parent as View).tag.toString().toInt()
+                    Log.i("AddParam", viewTag.toString())
+
+                    val deletedView = queryViewsList.find { it ->
+                        Log.i("onAddParam", it.tag.toString())
+                        return@find it.tag.toString().toInt() == viewTag
+                    }
+                    Log.i("onAddParam", deletedView?.tag.toString())
+
+                    // remove header view from list and view hierarchy
+                    binding.queryHost.removeView(deletedView)
+                    queryViewsList.remove(deletedView)
+                }
+            }
+            // add query view to list
+            binding.queryHost.addView(view)
+            queryViewsList.add(view)
         }
     }
 }
