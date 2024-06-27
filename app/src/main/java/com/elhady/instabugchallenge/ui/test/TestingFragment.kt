@@ -100,9 +100,14 @@ class TestingFragment : Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner) {
             if (it.isSuccess && it.response != null) {
                 Log.i(TAG, it.response.toString())
-                binding.tvResponse.text = it.response.toString()
+                binding.responseLayout.visibility = View.VISIBLE
+                binding.responseCode.text = it.response.responseCode.toString()
+//                binding.errorCode.text = it.response.errorCode.toString()
+                binding.headers.text = it.response.headers.toString()
+                binding.requestBodyText.text = it.response.responseBody
+                binding.responseBody.text = it.response.responseBody
             } else {
-                binding.tvResponse.text = ""
+                binding.responseLayout.visibility = View.GONE
             }
 
             if (it.isLoading) {
