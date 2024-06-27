@@ -35,65 +35,66 @@ class TestingFragment : Fragment() {
         onAddQueryParam()
     }
 
-    private fun onAddHeader() {
-        binding.addHeaderItem.setOnClickListener {
-            // inflate header item from layouts
+
+    private fun onAddQueryParam() {
+        binding.addQueryItem.setOnClickListener {
             val view = LayoutInflater.from(requireActivity())
-                .inflate(R.layout.header_item, binding.headerHost, false)
+                .inflate(R.layout.header_item, binding.queryHost, false)
 
-            Log.i("Click", "${headersViewsList.size}")
+            view.tag = queryViewsList.size.toString()
+            Log.i("onAddHeader: Counter", queryViewsList.size.toString())
 
-             // on remove header clicked
             view.findViewById<ImageView>(R.id.delete_item).setOnClickListener {
-                if (headersViewsList.size != 0) {
+                // try to remove the header
+                if (queryViewsList.size != 0) {
                     val viewTag = (it.parent as View).tag.toString().toInt()
-                    Log.i("AddHeader", viewTag.toString())
+                    Log.i("onAddHeader: Tag", viewTag.toString())
 
-                    val deletedView = headersViewsList.find { it ->
+                    val deletedView = queryViewsList.find {
                         Log.i("onAddHeader: find", it.tag.toString())
                         return@find it.tag.toString().toInt() == viewTag
                     }
                     Log.i("onAddHeader: find", deletedView?.tag.toString())
+                    //Toast.makeText(this, deletedView?.tag.toString(), Toast.LENGTH_SHORT).show()
 
-                    // remove header view from list and view hierarchy
-                    binding.headerHost.removeView(deletedView)
-                    headersViewsList.remove(deletedView)
+                    binding.queryHost.removeView(deletedView)
+                    queryViewsList.remove(deletedView)
+
                 }
             }
-            // add header view to list
-            binding.headerHost.addView(view)
-            headersViewsList.add(view)
+            binding.queryHost.addView(view)
+            queryViewsList.add(view)
         }
     }
 
-    private fun onAddQueryParam(){
-        binding.addQueryItem.setOnClickListener {
-            // inflate header item from layouts
+    private fun onAddHeader() {
+        binding.addHeaderItem.setOnClickListener {
             val view = LayoutInflater.from(requireActivity())
-                .inflate(R.layout.header_item, binding.queryHost, false)
+                .inflate(R.layout.header_item, binding.headerHost, false)
 
-            Log.i("Click", "${queryViewsList.size}")
+            view.tag = headersViewsList.size.toString()
+            Log.i("onAddHeader: Counter", headersViewsList.size.toString())
 
-            // on remove header clicked
             view.findViewById<ImageView>(R.id.delete_item).setOnClickListener {
-                if (queryViewsList.size != 0) {
+                // try to remove the header
+                if (headersViewsList.size != 0) {
                     val viewTag = (it.parent as View).tag.toString().toInt()
-                    Log.i("AddParam", viewTag.toString())
+                    Log.i("onAddHeader: Tag", viewTag.toString())
 
-                    val deletedView = queryViewsList.find { it ->
-                        Log.i("onAddParam", it.tag.toString())
+                    val deletedView = headersViewsList.find {
+                        Log.i("onAddHeader: find", it.tag.toString())
                         return@find it.tag.toString().toInt() == viewTag
                     }
-                    Log.i("onAddParam", deletedView?.tag.toString())
+                    Log.i("onAddHeader: find", deletedView?.tag.toString())
+                    //Toast.makeText(this, deletedView?.tag.toString(), Toast.LENGTH_SHORT).show()
 
-                    // remove header view from list and view hierarchy
-                    binding.queryHost.removeView(deletedView)
-                    queryViewsList.remove(deletedView)
+                    binding.headerHost.removeView(deletedView)
+                    headersViewsList.remove(deletedView)
+
                 }
             }
-            // add query view to list
-            binding.queryHost.addView(view)
-            queryViewsList.add(view)
+            binding.headerHost.addView(view)
+            headersViewsList.add(view)
         }
     }
 }
