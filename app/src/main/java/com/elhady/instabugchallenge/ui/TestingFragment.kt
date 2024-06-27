@@ -20,7 +20,7 @@ import com.elhady.instabugchallenge.databinding.FragmentTestingBinding
 
 class TestingFragment : Fragment() {
 
-    private val viewModel: TestingViewModel by viewModels()
+    private val viewModel: TestingViewModel by viewModels { TestingViewModelFactory() }
     private lateinit var binding: FragmentTestingBinding
     private lateinit var headersViewsList: MutableList<View>
     private lateinit var queryViewsList: MutableList<View>
@@ -55,9 +55,11 @@ class TestingFragment : Fragment() {
                 R.id.radioBtn_get -> {
                     RequestType.GET
                 }
+
                 R.id.radioBtn_post -> {
                     RequestType.POST
                 }
+
                 else -> RequestType.NONE
             }
             val headersParams = headersParam()
@@ -75,11 +77,11 @@ class TestingFragment : Fragment() {
     }
 
     private fun listenToChanges() {
-        viewModel.uiState.observe(requireActivity(), Observer {
+        viewModel.uiState.observe(viewLifecycleOwner) {
             if (it.isSuccess && it.response != null) {
                 Log.i(TAG, it.response.toString())
                 binding.tvResponse.text = it.response.toString()
-            }else{
+            } else {
                 binding.tvResponse.text = ""
             }
 
@@ -97,10 +99,11 @@ class TestingFragment : Fragment() {
 
             if (it.isRequestTypeValid != null) {
                 if (!it.isRequestTypeValid) {
-                    Toast.makeText(requireActivity(), "Un Valid Request Type", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), "Un Valid Request Type", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
-        })
+        }
     }
 
     private fun onRequestTypeSelected() {
@@ -110,6 +113,7 @@ class TestingFragment : Fragment() {
                     binding.queryHost.visibility = View.VISIBLE
                     binding.requestBody.visibility = View.GONE
                 }
+
                 R.id.radioBtn_post -> {
                     binding.queryHost.visibility = View.GONE
                     binding.requestBody.visibility = View.VISIBLE
