@@ -2,6 +2,7 @@
     <string name="app_name">InstabugChallenge</string>
     <string name="headers">Headers</string>
     <string name="query">Query Param</string>
+    <string name="request_body_hint">{\n  \"name\": \"Islam Elhady\",\n  \"email\": \"islam.elhadyy@gmail.com\"\n}</string>
 
     <string-array name="request_types">
         <item>GET</item>
