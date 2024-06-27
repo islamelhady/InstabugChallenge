@@ -1,4 +1,4 @@
-package com.elhady.instabugchallenge.ui
+package com.elhady.instabugchallenge.ui.test
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -9,9 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import com.elhady.instabugchallenge.R
 import com.elhady.instabugchallenge.data.ParameterValue
 import com.elhady.instabugchallenge.data.RequestType
@@ -36,44 +34,66 @@ class TestingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializeUI()
+        setListeners()
+    }
+
+    private fun initializeUI() {
         headersViewsList = mutableListOf()
         queryViewsList = mutableListOf()
-        onAddHeader()
-        onAddQueryParam()
-        listenToChanges()
+    }
+
+    private fun setListeners() {
+        binding.btnSendRequest.setOnClickListener { onSendClick() }
+        binding.addHeaderItem.setOnClickListener { onAddHeaderView() }
+        binding.addQueryItem.setOnClickListener { onAddQueryParamView() }
         onRequestTypeSelected()
-        onSendClick()
+        listenToChanges()
     }
 
     private fun onSendClick() {
-        binding.btnSendRequest.setOnClickListener {
-            // collect user inserted data
-            val url = binding.etUrl.text.toString().trim()
-            val requestBody = binding.etRequestBody.text.toString().trim()
-
-            val requestType = when (binding.typeGroup.checkedRadioButtonId) {
-                R.id.radioBtn_get -> {
-                    RequestType.GET
-                }
-
-                R.id.radioBtn_post -> {
-                    RequestType.POST
-                }
-
-                else -> RequestType.NONE
+        val url = binding.etUrl.text.toString().trim()
+        val requestBody = binding.etRequestBody.text.toString().trim()
+        val headers = collectParameters(headersViewsList)
+        val queryParams = collectParameters(queryViewsList)
+        val requestType = when (binding.typeGroup.checkedRadioButtonId) {
+            R.id.radioBtn_get -> {
+                RequestType.GET
             }
-            val headersParams = headersParam()
-            val queriesParams = queriesParam()
 
-            val request = RequestURL(
-                url = url,
-                requestType = requestType,
-                requestBody = requestBody,
-                headersParameters = headersParams,
-                queryParameters = queriesParams
-            )
-            viewModel.intentLiveData.value = TestUiEvent.SendRequestEvent(request)
+            else -> RequestType.POST
         }
+
+        val mRequestModel = RequestURL(
+            url = url,
+            requestType = requestType,
+            headersParameters = headers,
+            queryParameters = queryParams,
+            requestBody = requestBody
+        )
+        Log.i(TAG, "{$mRequestModel + $requestType + $headers + $queryParams + $requestBody}")
+        sendGetDataIntent(mRequestModel)
+    }
+
+
+    private fun sendGetDataIntent(mRequestModel: RequestURL) {
+        viewModel.sendRequest(
+            url = mRequestModel.url,
+            requestType = mRequestModel.requestType,
+            headers = mRequestModel.headersParameters,
+            queryParams = mRequestModel.queryParameters,
+            requestBody = mRequestModel.requestBody
+        )
+    }
+
+    private fun collectParameters(viewsList: List<View>): List<ParameterValue> {
+        return viewsList.map { view ->
+            val key = view.findViewById<EditText>(R.id.edit_key).text.toString().trim()
+            val value = view.findViewById<EditText>(R.id.edit_value).text.toString().trim()
+            ParameterValue(key, value)
+        }.filter {
+            !(it.key.isNullOrEmpty() && it.value.isNullOrEmpty())
+        }.toList()
     }
 
     private fun listenToChanges() {
@@ -123,7 +143,7 @@ class TestingFragment : Fragment() {
     }
 
 
-    private fun onAddQueryParam() {
+    private fun onAddQueryParamView() {
         binding.addQueryItem.setOnClickListener {
             val view = LayoutInflater.from(requireActivity())
                 .inflate(R.layout.header_item, binding.queryHost, false)
@@ -154,7 +174,7 @@ class TestingFragment : Fragment() {
         }
     }
 
-    private fun onAddHeader() {
+    private fun onAddHeaderView() {
         binding.addHeaderItem.setOnClickListener {
             val view = LayoutInflater.from(requireActivity())
                 .inflate(R.layout.header_item, binding.headerHost, false)
@@ -183,35 +203,6 @@ class TestingFragment : Fragment() {
             binding.headerHost.addView(view)
             headersViewsList.add(view)
         }
-    }
-
-    private fun headersParam(): List<ParameterValue> {
-        val headers = mutableMapOf<String, String>()
-        headersViewsList.map {
-            val linearView = it as LinearLayout
-            val key = (linearView.getChildAt(0) as EditText).text.toString()
-            val value = (linearView.getChildAt(1) as EditText).text.toString()
-            headers.put(key, value)
-        }
-
-        return headers.map {
-            return@map ParameterValue(it.key, it.value)
-        }.filter { return@filter !(it.key.isNullOrEmpty() && it.value.isNullOrEmpty()) }
-            .toList()
-    }
-
-    private fun queriesParam(): List<ParameterValue> {
-        val queries = mutableMapOf<String, String>()
-        queryViewsList.map {
-            val linearView = it as LinearLayout
-            val key = (linearView.getChildAt(0) as EditText).text.toString()
-            val value = (linearView.getChildAt(1) as EditText).text.toString()
-            queries.put(key, value)
-        }
-        return queries.map {
-            return@map ParameterValue(it.key, it.value)
-        }.filter { return@filter !(it.key.isNullOrEmpty() && it.value.isNullOrEmpty()) }
-            .toList()
     }
 }
 

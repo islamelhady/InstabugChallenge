@@ -8,6 +8,7 @@
 
 
     <EditText
+        android:id="@+id/edit_key"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
@@ -15,6 +16,7 @@
         android:hint="Key" />
 
     <EditText
+        android:id="@+id/edit_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"

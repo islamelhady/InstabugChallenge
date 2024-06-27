@@ -11,6 +11,5 @@ data class RequestURL(
 
 enum class RequestType {
     GET,
-    POST,
-    NONE
+    POST
 }
