@@ -1,4 +1,4 @@
-package com.elhady.instabugchallenge
+package com.elhady.instabugchallenge.ui
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.elhady.instabugchallenge.R
 import com.elhady.instabugchallenge.databinding.FragmentTestingBinding
 
 class TestingFragment : Fragment() {
