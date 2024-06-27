@@ -3,6 +3,8 @@
     <string name="headers">Headers</string>
     <string name="query">Query Param</string>
     <string name="request_body_hint">{\n  \"name\": \"Islam Elhady\",\n  \"email\": \"islam.elhadyy@gmail.com\"\n}</string>
+    <string name="cache">Cache</string>
+    <string name="Test">Testing</string>
 
     <string-array name="request_types">
         <item>GET</item>

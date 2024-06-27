@@ -7,7 +7,12 @@
 
     <fragment
         android:id="@+id/testingFragment"
-        android:name="com.elhady.instabugchallenge.TestingFragment"
+        android:name="com.elhady.instabugchallenge.ui.TestingFragment"
         android:label="Testing APIs"
         tools:layout="@layout/fragment_testing" />
+    <fragment
+        android:id="@+id/cacheFragment"
+        android:name="com.elhady.instabugchallenge.ui.cach.CacheFragment"
+        android:label="Caching"
+        tools:layout="@layout/fragment_cache" />
 </navigation>
