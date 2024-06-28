@@ -1,10 +1,10 @@
 package com.elhady.instabugchallenge.data
 
 data class Response(
-    val requestURL: RequestURL? = null,
-    val responseBody: String = "",
-    val headers: List<ParameterValue>? = emptyList(),
-    val responseCode: Int = -1,
-    val errorType: HttpErrorType? = null,
-    val errorMessage: String? = null,
+    var responseCode: Int = 0,
+    var errorCode: String = "",
+    var requestURL: RequestURL? = RequestURL(),
+    var responseBody: String = "",
+    var headers: List<ParameterValue>? = emptyList(),
+    var executionTime: Long = 0
 )
