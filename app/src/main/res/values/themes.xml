@@ -6,4 +6,15 @@
     </style>
 
     <style name="Theme.InstabugChallenge" parent="Base.Theme.InstabugChallenge" />
+
+    <style name="StatusTextView">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="StatusView">
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:visibility">gone</item>
+    </style>
 </resources>

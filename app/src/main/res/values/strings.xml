@@ -15,4 +15,18 @@
         <item>JSON String</item>
         <item>Multipart/File Upload</item>
     </string-array>
+
+    <string-array name="status_array">
+        <item>View Cached Requests</item>
+        <item>Sort by Execution Time</item>
+        <item>Filter by GET</item>
+        <item>Filter by POST</item>
+        <item>Success Status</item>
+        <item>Failure Status</item>
+    </string-array>
+
+    <string name="text_no_connectivity">No Connection</string>
+    <string name="text_connectivity">Back Online</string>
+    <string name="clear_all_cached_requests">Clear all cached requests</string>
+    <string name="no_cached_requests">No cached requests</string>
 </resources>
