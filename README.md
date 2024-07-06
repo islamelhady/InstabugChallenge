@@ -1,5 +1,18 @@
 # InstabugChallenge
 
+## ✨ Screenshots
+
+<h4 align="center">
+<img src="screen/Screenshot_20240707_010151.png" width="25%">
+<img src="screen/Screenshot_20240707_010320.png" width="25%">
+<img src="screen/Screenshot_20240707_010531.png" width="25%">
+<img src="screen/Screenshot_20240707_010637.png" width="25%">
+<img src="screen/Screenshot_20240707_013433.png" width="25%">
+<img src="screen/Screenshot_20240707_014627.png" width="25%">
+<img src="screen/Screenshot_20240707_013526.png" width="25%">
+<img src="screen/Screenshot_20240707_013507.png" width="25%">
+<img src="screen/Screenshot_20240707_013422.png" width="25%">
+
 ### Tools & APIs:
 - Kotlin
 - View Binding   
