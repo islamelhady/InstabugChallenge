@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Cached Requests will appear here"
+            android:text="@string/cached_requests_will_appear_here"
             android:textSize="16sp" />
 
     </ScrollView>
@@ -66,7 +66,6 @@
         android:visibility="gone"
         tools:visibility="visible"
         android:textSize="30sp"
-
         android:fontFamily="sans-serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -143,13 +143,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:layout_width="wrap_content"
-                android:text="JSON String" />
+                android:text="@string/json_string" />
 
             <RadioButton
                 android:id="@+id/radioBtn_multipart"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Multipart/File Upload" />
+                android:text="@string/multipart_file_upload" />
         </RadioGroup>
 
         <LinearLayout
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:layout_width="wrap_content"
-                android:text="JSON String Body"
+                android:text="@string/json_string_body"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -193,14 +193,14 @@
                 android:id="@+id/btn_choose_file"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Choose File" />
+                android:text="@string/choose_file" />
 
             <TextView
                 android:id="@+id/tv_chosen_file"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
-                android:text="No file chosen"
+                android:text="@string/no_file_chosen"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -223,7 +223,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Error Message"
+            android:text="@string/error_message"
             android:textColor="@color/red"
             android:visibility="gone"
             tools:visibility="visible" />
@@ -245,7 +245,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Request URL:"
+                    android:text="@string/request_url"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -256,7 +256,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Url"
+                    android:text="@string/url"
                     android:textSize="15sp" />
 
                 <View
@@ -271,7 +271,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Response code:"
+                    android:text="@string/response_code"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -282,7 +282,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Response code"
+                    android:text="@string/response"
                     android:textSize="15sp" />
 
                 <View
@@ -297,7 +297,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Error:"
+                    android:text="@string/error"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -308,7 +308,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="No Error"
+                    android:text="@string/no_error"
                     android:textSize="15sp" />
 
                 <View
@@ -322,7 +322,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Request/Response Headers:"
+                    android:text="@string/request_response_headers"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -333,7 +333,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Headers"
+                    android:text="@string/header"
                     android:textSize="15sp" />
 
                 <View
@@ -347,7 +347,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Response Body:"
+                    android:text="@string/response_body"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -358,7 +358,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:text="Response Body"
+                    android:text="@string/body"
                     android:textSize="15sp" />
 
 

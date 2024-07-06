@@ -166,14 +166,14 @@ class TestingFragment : Fragment() {
 
     private fun updateResponseUI(uiState: TestAPIsUiState) {
         with(binding) {
+            if (!uiState.isUrlValid && !uiState.isRequestTypeValid){
+                showSnackbarCenter("Please enter a valid url")
+            }
             if (uiState.isSuccess && uiState.response != null) {
                 Log.i(TAG, uiState.response.toString())
                 responseLayout.visibility = View.VISIBLE
                 responseCode.text = uiState.response.responseCode.toString()
-                url.text = "uiState.response.requestURL"
-                if (!uiState.isUrlValid && !uiState.isRequestTypeValid){
-                    showSnackbarCenter("Please enter a valid url")
-                }
+                url.text = uiState.response.requestURL?.url
                 when (uiState.response.responseCode) {
                     in 200..299 -> {
                         errorCode.setTextColor(resources.getColor(R.color.green))
@@ -208,14 +208,6 @@ class TestingFragment : Fragment() {
         } else {
             binding.errorMessage.visibility = View.GONE
         }
-    }
-
-    private fun showSnackBar(message: String) {
-        Snackbar.make(
-            binding.root,
-            message,
-            Snackbar.LENGTH_SHORT
-        ).show()
     }
 
 
@@ -278,8 +270,6 @@ class TestingFragment : Fragment() {
                         Log.i("onAddHeader: find", it.tag.toString())
                         return@find it.tag.toString().toInt() == viewTag
                     }
-                    Log.i("onAddHeader: find", deletedView?.tag.toString())
-                    //Toast.makeText(this, deletedView?.tag.toString(), Toast.LENGTH_SHORT).show()
 
                     binding.queryHost.removeView(deletedView)
                     queryViewsList.remove(deletedView)
@@ -296,22 +286,13 @@ class TestingFragment : Fragment() {
             val view = LayoutInflater.from(requireActivity())
                 .inflate(R.layout.header_item, binding.headerHost, false)
 
-            view.tag = headersViewsList.size.toString()
-            Log.i("onAddHeader: Counter", headersViewsList.size.toString())
-
             view.findViewById<ImageView>(R.id.delete_item).setOnClickListener {
                 // try to remove the header
                 if (headersViewsList.size != 0) {
                     val viewTag = (it.parent as View).tag.toString().toInt()
-                    Log.i("onAddHeader: Tag", viewTag.toString())
-
                     val deletedView = headersViewsList.find {
-                        Log.i("onAddHeader: find", it.tag.toString())
                         return@find it.tag.toString().toInt() == viewTag
                     }
-                    Log.i("onAddHeader: find", deletedView?.tag.toString())
-                    //Toast.makeText(this, deletedView?.tag.toString(), Toast.LENGTH_SHORT).show()
-
                     binding.headerHost.removeView(deletedView)
                     headersViewsList.remove(deletedView)
 

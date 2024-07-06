@@ -69,7 +69,6 @@ class TestingViewModel(
                     uiState.value?.copy(
                         response = response,
                         isSuccess = true,
-                        isUrlValid = true,
                         isLoading = false
                     )
                 )
@@ -87,7 +86,7 @@ class TestingViewModel(
             uiState.value?.copy(
                 errorMessage = errors,
                 isSuccess = false,
-                isLoading = false
+                isLoading = false,
             )
         )
     }

@@ -29,4 +29,21 @@
     <string name="text_connectivity">Back Online</string>
     <string name="clear_all_cached_requests">Clear all cached requests</string>
     <string name="no_cached_requests">No cached requests</string>
+    <string name="cached_requests_will_appear_here">Cached Requests will appear here</string>
+    <string name="multipart_file_upload">Multipart/File Upload</string>
+    <string name="json_string">JSON String</string>
+    <string name="json_string_body">JSON String Body</string>
+    <string name="choose_file">Choose File</string>
+    <string name="no_file_chosen">No file chosen</string>
+    <string name="error_message">Error Message</string>
+    <string name="request_url">Request URL:</string>
+    <string name="url">Url</string>
+    <string name="response_code">Response code:</string>
+    <string name="error">Error:</string>
+    <string name="response">Response code</string>
+    <string name="no_error">No Error</string>
+    <string name="request_response_headers">Request/Response Headers:</string>
+    <string name="header">Headers</string>
+    <string name="response_body">Response Body:</string>
+    <string name="body">Response Body</string>
 </resources>
